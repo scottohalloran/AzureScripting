@@ -39,8 +39,8 @@ az network nic create --name testvm1-nic --network-security-group testvm1-nsg --
 az network nic create --name ManufacturingVM-nic --network-security-group NanufacturingVM-nsg --public-ip-address ManufacturingVM-ip --resource-group ContosoResourceGroup --subnet ManufacturingSystemSubnet --vnet-name ManufacturingVnet
 
 #Create the VM
-az vm create --admin-username TestUser --admin-password TestPa$$w0rd! --image Win2019Datacenter --name testvm1 --public-ip-sku Basic --resource-group ContosoResourceGroup --nics testvm1-nic --size Standard_DS1_v2
-az vm create --admin-username TestUser --admin-password TestPa$$w0rd! --image Win2019Datacenter --name ManufacturingVM --public-ip-sku Basic --resource-group ContosoResourceGroup --nics ManufacturingVM-nic --size Standard_DS1_v2
+az vm create --admin-username TestUser --admin-password 'TestPa$$w0rd!' --image Win2019Datacenter --name testvm1 --public-ip-sku Basic --resource-group ContosoResourceGroup --nics testvm1-nic --size Standard_DS1_v2
+az vm create --admin-username TestUser --admin-password 'TestPa$$w0rd!' --image Win2019Datacenter --name ManufacturingVM --public-ip-sku Basic --resource-group ContosoResourceGroup --nics ManufacturingVM-nic --size Standard_DS1_v2
 
 #Open port 3389
 az vm open-port --port 3389 --resource-group ContosoResourceGroup --name testvm1
