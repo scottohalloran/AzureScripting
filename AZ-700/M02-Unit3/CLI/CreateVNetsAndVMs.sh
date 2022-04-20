@@ -26,7 +26,7 @@ az network vnet subnet create  --name ResearchSystemSubnet --resource-group Cont
 #Create vitual machines to test the configurationconnections
 
 #Create the network security group for the test VMs
-az network nsg create --name testvm1-nsg --resource-group ContosoResourceGroup 
+az network nsg create --name CoreServicesVM-nsg --resource-group ContosoResourceGroup 
 az network nsg create --name NanufacturingVM-nsg --resource-group ContosoResourceGroup 
 
 #Create the public IPs for the test VMs
@@ -35,13 +35,11 @@ az network public-ip create --name ManufacturingVM-ip --resource-group ContosoRe
 
 
 #Create the NICs for the VMs
-az network nic create --name testvm1-nic --network-security-group testvm1-nsg --public-ip-address PIPName1 --resource-group ContosoResourceGroup --subnet DatabaseSubnet --vnet-name CoreServicesVnet 
+az network nic create --name CoreServicesVM-nic --network-security-group testvm1-nsg --public-ip-address PIPName1 --resource-group ContosoResourceGroup --subnet DatabaseSubnet --vnet-name CoreServicesVnet 
 az network nic create --name ManufacturingVM-nic --network-security-group NanufacturingVM-nsg --public-ip-address ManufacturingVM-ip --resource-group ContosoResourceGroup --subnet ManufacturingSystemSubnet --vnet-name ManufacturingVnet
 
 #Create the VM
-az vm create --admin-username TestUser --admin-password 'TestPa$$w0rd!' --image Win2019Datacenter --name testvm1 --public-ip-sku Basic --resource-group ContosoResourceGroup --nics testvm1-nic --size Standard_DS1_v2
+az vm create --admin-username TestUser --admin-password 'TestPa$$w0rd!' --image Win2019Datacenter --name CoreServicesVM --public-ip-sku Basic --resource-group ContosoResourceGroup --nics testvm1-nic --size Standard_DS1_v2
 az vm create --admin-username TestUser --admin-password 'TestPa$$w0rd!' --image Win2019Datacenter --name ManufacturingVM --public-ip-sku Basic --resource-group ContosoResourceGroup --nics ManufacturingVM-nic --size Standard_DS1_v2
 
-#Open port 3389
-# az vm open-port --port 3389 --resource-group ContosoResourceGroup --name testvm1
-# az vm open-port --port 3389 --resource-group ContosoResourceGroup --name ManufacturingVM
+

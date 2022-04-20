@@ -50,5 +50,5 @@ az network nic create --name testvm1-nic --network-security-group testvm1-nsg --
 az network nic create --name testvm2-nic --network-security-group testvm2-nsg --public-ip-address PIPName2 --resource-group ContosoResourceGroup --subnet DatabaseSubnet --vnet-name CoreServicesVnet 
 
 #Create the VMs
-az vm create --admin-username TestUser --admin-password TestPa$$w0rd! --image Win2019Datacenter --name testvm1 --public-ip-sku Basic --resource-group ContosoResourceGroup --nics testvm1-nic 
-az vm create --admin-username TestUser --admin-password TestPa$$w0rd! --image Win2019Datacenter --name testvm2 --public-ip-sku Basic --resource-group ContosoResourceGroup --nics testvm2-nic 
+az vm create --admin-username TestUser --admin-password 'TestPa$$w0rd!' --image Win2019Datacenter --name testvm1 --public-ip-sku Basic --resource-group ContosoResourceGroup --nics testvm1-nic 
+az vm create --admin-username TestUser --admin-password 'TestPa$$w0rd!' --image Win2019Datacenter --name testvm2 --public-ip-sku Basic --resource-group ContosoResourceGroup --nics testvm2-nic 
