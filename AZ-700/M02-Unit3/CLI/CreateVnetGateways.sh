@@ -1,15 +1,34 @@
 #!/bin/bash
 
 
+#Create the public IP Addresses
+az network public-ip create --name CoreServicesVnetGateway-ip --resource-group ContosoResourceGroup --location eastus 
+az network public-ip create --name ManufacturingVM-ip --resource-group ContosoResourceGroup --location westeurope 
+
 #Create the VNet gateways
 
 az network vnet-gateway create 
+--resource-group ContosoResourceGroup
 --name CoreServicesVnetGateway 
 --location eastus 
---resource-group ContosoResourceGroup 
---vnet 
 --gateway-type vpn 
---sku VpnGw1 
 --vpn-type RouteBased 
+--sku VpnGw1 
 --vpn-gateway-generation Generation1
-az network vnet peering create --name ManufacturingVnet-to-CoreServicesVnet --remote-vnet CoreServicesVnet --resource-group ContosoResourceGroup --vnet-name ManufacturingVnet
+--vnet CoreServicesVnet
+--public-ip-addresses CoreServicesVnetGateway-ip
+
+az network vnet-gateway create 
+--resource-group ContosoResourceGroup
+--name ManufacturingVnetGateway 
+--location westeurope
+--gateway-type vpn 
+--vpn-type RouteBased 
+--sku VpnGw1 
+--vpn-gateway-generation Generation1
+--vnet ManufacturingVnet
+--public-ip-addresses ManufacturingVnetGateway-ip
+
+
+
+
