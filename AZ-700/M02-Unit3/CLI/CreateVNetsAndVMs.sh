@@ -27,7 +27,7 @@ az network vnet subnet create  --name SensorSubnet3 --resource-group ContosoReso
 
 #Create the network security group for the test VMs
 az network nsg create --name CoreServicesVM-nsg --resource-group ContosoResourceGroup 
-az network nsg create --name NanufacturingVM-nsg --resource-group ContosoResourceGroup 
+az network nsg create --name NanufacturingVM-nsg --resource-group ContosoResourceGroup --location westeurope
 
 #Create the public IPs for the test VMs
 az network public-ip create --name CoreServicesVM-ip --resource-group ContosoResourceGroup --location eastus 
